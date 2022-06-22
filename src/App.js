@@ -5,7 +5,8 @@ class App extends Component {
     super();
 
     this.state = {
-      name: 'Bruno1'
+      name: { firstName: 'Bruno', lastName: 'Jullien' },
+      company: 'PII'
     }
   }
 
@@ -14,12 +15,20 @@ class App extends Component {
       <div className="App" >
         <header className="App-header">
           <p>
-            Hi {this.state.name}
+            Hi this is {this.state.firstName} {this.state.lastName}, I work at {this.state.company}.
           </p>
-          <button onClick={() => {
-            this.setState({ name: "Bruno clicked!" }); //new object allocated => DOM updated
-            console.log(this.state.name);
-          }}>
+          <button
+            onClick={() => {
+              this.setState(
+                () => {
+                  return { firstName: "Bruno (clicked)", lastName: "Jullien" };
+                },
+                () => {
+                  console.log(this.state);
+                }
+              );
+            }}
+          >
             Change Name
           </button>
         </header>
