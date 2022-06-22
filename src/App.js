@@ -16,7 +16,10 @@ class App extends Component {
           <p>
             Hi {this.state.name}
           </p>
-          <button>
+          <button onClick={() => {
+            this.setState({ name: "Bruno clicked!" }); //new object allocated => DOM updated
+            console.log(this.state.name);
+          }}>
             Change Name
           </button>
         </header>
